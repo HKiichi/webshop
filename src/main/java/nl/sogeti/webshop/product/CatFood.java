@@ -1,21 +1,22 @@
-package nl.sogeti.webshop.Product;
+package nl.sogeti.webshop.product;
 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 /**
  * Created by ikikuchi on 13-1-2017.
  */
 @Entity
-@Table(name = "CATFOOD")
+@Table
 public class CatFood {
     @Id
     @GeneratedValue
 
-    private long id;
+    private int id;
 
 
     private String name;
@@ -26,11 +27,11 @@ public class CatFood {
 
     private double price;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,4 +58,30 @@ public class CatFood {
     public void setPrice(double price) {
         this.price = price;
     }
+
+   /* @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CatFood catFood = (CatFood) o;
+        return id == catFood.id;
+    }*/
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        else if (this == obj)
+            return true;
+        else
+            return this.hashCode() == ((CatFood) obj).hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getId();
+    }
+
+
+
 }

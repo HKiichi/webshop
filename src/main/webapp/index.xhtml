@@ -4,63 +4,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui" >
-    <h:head>
-        <script type="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    </h:head>
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
 
    <f:view>
        <h:head>
-      <h1>Pet Supplies store</h1>
+      <h1>Pet Supplies</h1>
        </h:head>
-      <h:outputStylesheet library="css" name="styles.css"  />
+    <body>
+    <div id="page-wrap">
+        <h:outputStylesheet library="css" name="styles.css"  />
+        <h:outputStylesheet library="css" name="main.css"  />
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
 
-           <div class="message">hoi</div>
 
-        <h:outputText value="hello"></h:outputText>
+
        <div></div>
+        <h:outputText value="#{shoppingCart.getSize()}" style="float:right"/>
+        <br></br>
+        <h:form>
+        <h:commandLink
+                        style="float:right;"
+                        action="cart">
+        <h:graphicImage id="img1"
+                        library="images"
+                        name="1485380753_shopping-cart.png"/>
+        </h:commandLink>
+        </h:form>
+        <br></br>
 
-       <h:outputLabel value="#{catFood.name}" for="catfood"/>
-       <h:outputText id="catfood" value="#{catFood.name}"/>
+           <h3>Producten</h3>
 
-
-      <!-- <p:panelGrid columns="2" layout="grid" border="0" ><!-->
-           <h3>Product</h3>
-
-
-           <h:outputText value="Image" />
-
-           <h:outputText value="Content" />
-
-           <h:outputText value="Content" />
-
-           <h:outputText value="Naam" />
-           <h:outputText value="Beschrijving" />
-           <h:outputText value="prijs" />
-
-           <h:dataTable id="catfoodTable" var="catfood" value="#{catBean.list()}"  border="1">
+        <div></div>
+           <h:dataTable id="CatBeanTable" var="CatBeanItem" value="#{catBean.getAllCatFoods()}"  border="1" style="align-content:center">
                <h:column>
-                   <f:facet name="header">Catfood name</f:facet>
-                   <h:outputText value="#{catFood.name}"/>
+                   <f:facet name="header">Product</f:facet>
+                   <h:outputText value="#{CatBeanItem.name}"/>
                </h:column>
               <h:column>
-                  <f:facet name="header">C</f:facet>
-                  #{catFood.description}
+                  <f:facet name="header">Beschrijving</f:facet>
+                  <h:outputText value="#{CatBeanItem.description}"/>
               </h:column>
+               <h:column>
+                   <f:facet name="header">Prijs</f:facet>
+                   <h:outputText value="#{CatBeanItem.price}"/>
+               </h:column>
+               <h:column>
+                   <h:form>
+               <h:commandButton value="In winkelwagen" action="#{shoppingCart.addProduct(CatBeanItem)}"/>
+               </h:form>
+           </h:column>
+               <!--<h:column>
+                   <h:form>
+                       <h:commandButton value="Verwijder" action="#{shoppingCart.removeProduct(CatBeanItem)}"/>
+                   </h:form>
+               </h:column>-->
            </h:dataTable>
 
+       <br></br>
+    <!--<h:form>
+        <h:commandButton value="Naar winkelwagen" action="order"></h:commandButton>
+    </h:form>-->
+
+    <h:outputText value="Voor bestellingen bel: 080-079651"/>
+
+    </div>
 
 
-       <h:form>
-           <h:commandButton value="catfood" action="#{catFood.works()}"/>
-       </h:form>
 
-
-
-
-
-      <!-- </p:panelGrid>-->
-
+    </body>
      </f:view>
 </html>

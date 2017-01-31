@@ -1,6 +1,6 @@
-package nl.sogeti.webshop;
+package nl.sogeti.webshop.service;
 
-import nl.sogeti.webshop.Product.CatFood;
+import nl.sogeti.webshop.product.CatFood;
 
 import javax.ejb.Stateless;
 

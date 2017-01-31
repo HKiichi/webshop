@@ -1,4 +1,4 @@
-package nl.sogeti.webshop;
+package nl.sogeti.webshop.common;
 
 /**
  * Created by ikikuchi on 16-1-2017.

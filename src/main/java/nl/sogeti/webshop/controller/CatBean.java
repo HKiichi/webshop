@@ -1,13 +1,12 @@
-package nl.sogeti.webshop;
+package nl.sogeti.webshop.controller;
 
-import nl.sogeti.webshop.Product.CatFood;
+import nl.sogeti.webshop.service.CatFoodService;
+import nl.sogeti.webshop.common.Parameters;
+import nl.sogeti.webshop.product.CatFood;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,19 +14,19 @@ import java.util.logging.Logger;
 /**
  * Created by ikikuchi on 13-1-2017.
  */
-@Named("catFood")
-public class CatBean implements Serializable{
+@Named
+public class CatBean {
 
 
     @Inject
     CatFoodService catFoodService;
 
-    @Inject
     Logger logger;
 
 
-    String name= "Sheba";
-    String description;
+    private String name;
+    private String description;
+
 
     public String getName() {
         return name;
@@ -37,12 +36,21 @@ public class CatBean implements Serializable{
         this.name = name;
     }
 
-    public List<CatFood> list() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<CatFood> getAllCatFoods() {
+
         return catFoodService.findAll();
     }
 
 
-    public String save(){
+    public String saveCatBeanItem(){
         if (name != null) {
             CatFood food = new CatFood();
             food.setName(this.name);
@@ -50,17 +58,17 @@ public class CatBean implements Serializable{
             catFoodService.persist(food);
             logger.log(Level.INFO, "Food " + food.getName() + " saved.");
 
+
         }
 
         return "hello";
     }
+
     public String getTestParameter(){
+
         return Parameters.TEST.getValue();
     }
 
-    public String works(){
-        System.out.println("It worked");
-        return "hi";
-    }
-    }
+
+}
 

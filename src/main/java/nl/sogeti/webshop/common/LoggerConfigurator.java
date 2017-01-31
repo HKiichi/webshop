@@ -1,4 +1,4 @@
-package nl.sogeti.webshop;
+package nl.sogeti.webshop.common;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;

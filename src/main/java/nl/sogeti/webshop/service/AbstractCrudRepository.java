@@ -1,6 +1,5 @@
-package nl.sogeti.webshop;
+package nl.sogeti.webshop.service;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
