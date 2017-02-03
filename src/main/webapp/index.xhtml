@@ -20,7 +20,7 @@
 
 
        <div></div>
-        <h:outputText value="#{shoppingCart.getSize()}" style="float:right"/>
+        <h:outputText value="#{shoppingCartBean.getSize()}" style="float:right"/>
         <br></br>
         <h:form>
         <h:commandLink
@@ -36,22 +36,22 @@
            <h3>Producten</h3>
 
         <div></div>
-           <h:dataTable id="CatBeanTable" var="CatBeanItem" value="#{catBean.getAllCatFoods()}"  border="1" style="align-content:center">
+           <h:dataTable id="FoodBeanTable" var="FoodBeanItem" value="#{foodBean.getAllFoods()}" border="1" style="align-content:center">
                <h:column>
                    <f:facet name="header">Product</f:facet>
-                   <h:outputText value="#{CatBeanItem.name}"/>
+                   <h:outputText value="#{FoodBeanItem.name}"/>
                </h:column>
               <h:column>
                   <f:facet name="header">Beschrijving</f:facet>
-                  <h:outputText value="#{CatBeanItem.description}"/>
+                  <h:outputText value="#{FoodBeanItem.description}"/>
               </h:column>
                <h:column>
                    <f:facet name="header">Prijs</f:facet>
-                   <h:outputText value="#{CatBeanItem.price}"/>
+                   <h:outputText value="#{FoodBeanItem.price}"/>
                </h:column>
                <h:column>
                    <h:form>
-               <h:commandButton value="In winkelwagen" action="#{shoppingCart.addProduct(CatBeanItem)}"/>
+               <h:commandButton value="In winkelwagen" action="#{shoppingCartBean.addProduct(FoodBeanItem)}"/>
                </h:form>
            </h:column>
                <!--<h:column>

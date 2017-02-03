@@ -1,12 +1,13 @@
 package nl.sogeti.webshop.controller;
 
-import nl.sogeti.webshop.service.CatFoodService;
+import nl.sogeti.webshop.model.Food;
+import nl.sogeti.webshop.service.FoodService;
 import nl.sogeti.webshop.common.Parameters;
-import nl.sogeti.webshop.product.CatFood;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,11 +16,11 @@ import java.util.logging.Logger;
  * Created by ikikuchi on 13-1-2017.
  */
 @Named
-public class CatBean {
+public class FoodBean implements Serializable{
 
 
     @Inject
-    CatFoodService catFoodService;
+    FoodService foodService;
 
     Logger logger;
 
@@ -44,18 +45,18 @@ public class CatBean {
         this.description = description;
     }
 
-    public List<CatFood> getAllCatFoods() {
+    public List<Food> getAllFoods() {
 
-        return catFoodService.findAll();
+        return foodService.findAll();
     }
 
 
-    public String saveCatBeanItem(){
+    public String saveFoodItem(){
         if (name != null) {
-            CatFood food = new CatFood();
+            Food food = new Food();
             food.setName(this.name);
             food.setDescription(this.description);
-            catFoodService.persist(food);
+            foodService.persist(food);
             logger.log(Level.INFO, "Food " + food.getName() + " saved.");
 
 
@@ -63,6 +64,19 @@ public class CatBean {
 
         return "hello";
     }
+
+/*    public Boolean saveFoodItems(List<Food> products) {
+        boolean saveSucceed = false;
+
+        if(!products.isEmpty()) {
+            for (Food f : products) {
+                foodService.persist(f);
+            }
+            saveSucceed = true; // uitzoeken wanneer je bij de laatste bent en alle perssist heeft gewerkt
+        }
+
+        return saveSucceed;
+    }*/
 
     public String getTestParameter(){
 

@@ -1,40 +1,36 @@
-package nl.sogeti.webshop;
+package nl.sogeti.webshop.controller;
 
-import nl.sogeti.webshop.service.CatFoodService;
-import nl.sogeti.webshop.product.CatFood;
+import nl.sogeti.webshop.model.Food;
+import nl.sogeti.webshop.service.AbstractCrudRepository;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by ikikuchi on 24-1-2017.
  */
 @Named
 @SessionScoped
-public class ShoppingCart implements Serializable{
+public class ShoppingCartBean implements Serializable {
 
-    ArrayList <CatFood> list;
+    ArrayList <Food> list;
 
 
-    public ArrayList<CatFood> getList() {
+    public ArrayList<Food> getList() {
         return list;
     }
 
-    public void setList(ArrayList<CatFood> list) {
+    public void setList(ArrayList<Food> list) {
         this.list = list;
     }
 
     @PostConstruct
     public void init(){
-        list = new ArrayList<CatFood>();
+        list = new ArrayList<Food>();
     }
 
 
@@ -44,7 +40,7 @@ public class ShoppingCart implements Serializable{
 
 
 
-    public String addProduct(CatFood x) {
+    public String addProduct(Food x) {
         list.add(x);
     //if(list.isEmpty()){
 
@@ -61,10 +57,10 @@ public class ShoppingCart implements Serializable{
 
         return "index";
     }
-    public Map<CatFood, Integer> printInHashMap() {
-        Map<CatFood, Integer> uniqueSet = new HashMap<CatFood, Integer>();
+    public Map<Food, Integer> printInHashMap() {
+        Map<Food, Integer> uniqueSet = new HashMap<Food, Integer>();
 
-        for (CatFood product : list) {
+        for (Food product : list) {
             uniqueSet.computeIfAbsent(product, k -> Collections.frequency(list, product));
         }
 
@@ -74,24 +70,24 @@ public class ShoppingCart implements Serializable{
     }
 
 
-    public Set printInHashSet() {
+ /*   public Set printInHashSet() {
        // int number=0;
         System.out.println("Example with Sets and Hashset");
-        Set<CatFood> uniqueSet = new HashSet<CatFood>(list);
+        Set<Food> uniqueSet = new HashSet<Food>(list);
 
-        for (CatFood temp : uniqueSet) {
-            System.out.println(temp.getId() + ": " + Collections.frequency(list, temp));
+        for (Food temp : uniqueSet) {
+            System.out.println(temp.getFoodId() + ": " + Collections.frequency(list, temp));
             Collections.frequency(list, temp);
 
         }
 
        return uniqueSet;
-    }
+    }*/
 
 
     public String calculatePrice(){
         double total= 0;
-        for (CatFood food : list ){
+        for (Food food : list ){
             total += food.getPrice();
         }
         String priceProduct = convertD(total);
@@ -105,7 +101,7 @@ public class ShoppingCart implements Serializable{
 
     }
 
-    public void removeProduct(CatFood x){
+    public void removeProduct(Food x){
       //  for(int i =0; i < list.size(); i++) {
         //    if (x.getId() == list.get(i).getId()) {
                 // list.remove(i);
@@ -125,7 +121,7 @@ public class ShoppingCart implements Serializable{
     }
 
     public String homePage(){
-        return "index.xhtml";
+        return "cart";
     }
 
     /*public String getName() {
