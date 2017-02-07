@@ -1,6 +1,6 @@
 package nl.sogeti.webshop.service;
 
-import nl.sogeti.webshop.model.Food;
+import nl.sogeti.webshop.model.Product;
 
 import javax.ejb.Stateless;
 
@@ -8,12 +8,12 @@ import javax.ejb.Stateless;
  * Created by ikikuchi on 13-1-2017.
  */
 @Stateless
-public class FoodService extends AbstractCrudRepository<Food> {
+public class FoodService extends AbstractCrudRepository<Product> {
 
 
     @Override
-    protected Class<Food> getEntityClass(){
-        return Food.class;
+    protected Class<Product> getEntityClass(){
+        return Product.class;
 
     }
 }

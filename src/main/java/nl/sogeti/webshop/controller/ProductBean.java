@@ -1,6 +1,6 @@
 package nl.sogeti.webshop.controller;
 
-import nl.sogeti.webshop.model.Food;
+import nl.sogeti.webshop.model.Product;
 import nl.sogeti.webshop.service.FoodService;
 import nl.sogeti.webshop.common.Parameters;
 
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * Created by ikikuchi on 13-1-2017.
  */
 @Named
-public class FoodBean implements Serializable{
+public class ProductBean implements Serializable{
 
 
     @Inject
@@ -45,7 +45,7 @@ public class FoodBean implements Serializable{
         this.description = description;
     }
 
-    public List<Food> getAllFoods() {
+    public List<Product> getAllFoods() {
 
         return foodService.findAll();
     }
@@ -53,11 +53,11 @@ public class FoodBean implements Serializable{
 
     public String saveFoodItem(){
         if (name != null) {
-            Food food = new Food();
-            food.setName(this.name);
-            food.setDescription(this.description);
-            foodService.persist(food);
-            logger.log(Level.INFO, "Food " + food.getName() + " saved.");
+            Product product = new Product();
+            product.setName(this.name);
+            product.setDescription(this.description);
+            foodService.persist(product);
+            logger.log(Level.INFO, "Product " + product.getName() + " saved.");
 
 
         }
@@ -65,11 +65,11 @@ public class FoodBean implements Serializable{
         return "hello";
     }
 
-/*    public Boolean saveFoodItems(List<Food> products) {
+/*    public Boolean saveFoodItems(List<Product> products) {
         boolean saveSucceed = false;
 
         if(!products.isEmpty()) {
-            for (Food f : products) {
+            for (Product f : products) {
                 foodService.persist(f);
             }
             saveSucceed = true; // uitzoeken wanneer je bij de laatste bent en alle perssist heeft gewerkt

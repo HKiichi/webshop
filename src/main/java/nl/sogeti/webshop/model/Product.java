@@ -8,10 +8,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table
-public class Food {
+public class Product {
     @Id
     @GeneratedValue
-    private int foodId;
+    private int productId;
 
     private String name;
 
@@ -20,15 +20,15 @@ public class Food {
 
     private double price;
 
-    public Food() {
+    public Product() {
     }
 
-    public int getFoodId() {
-        return foodId;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setFoodId(int foodId) {
-        this.foodId = foodId;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -59,7 +59,7 @@ public class Food {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Food catFood = (Food) o;
+        Product catFood = (Product) o;
         return id == catFood.id;
     }*/
 
@@ -70,12 +70,12 @@ public class Food {
         else if (this == obj)
             return true;
         else
-            return this.hashCode() == ((Food) obj).hashCode();
+            return this.hashCode() == ((Product) obj).hashCode();
     }
 
     @Override
     public int hashCode() {
-        return this.getFoodId();
+        return this.getProductId();
     }
 
 

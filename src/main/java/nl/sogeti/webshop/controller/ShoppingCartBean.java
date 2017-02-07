@@ -1,7 +1,6 @@
 package nl.sogeti.webshop.controller;
 
-import nl.sogeti.webshop.model.Food;
-import nl.sogeti.webshop.service.AbstractCrudRepository;
+import nl.sogeti.webshop.model.Product;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -17,32 +16,32 @@ import java.util.*;
 @SessionScoped
 public class ShoppingCartBean implements Serializable {
 
-    ArrayList <Food> list;
+    ArrayList<Product> list;
 
+    public void emptyCart() {
+        list.clear();
+    }
 
-    public ArrayList<Food> getList() {
+    public ArrayList<Product> getList() {
         return list;
     }
 
-    public void setList(ArrayList<Food> list) {
+    public void setList(ArrayList<Product> list) {
         this.list = list;
     }
 
     @PostConstruct
-    public void init(){
-        list = new ArrayList<Food>();
+    public void init() {
+        list = new ArrayList<Product>();
     }
 
 
     //Logger logger;
 
-    private static DecimalFormat df = new DecimalFormat(".##");
 
-
-
-    public String addProduct(Food x) {
+    public String addProduct(Product x) {
         list.add(x);
-    //if(list.isEmpty()){
+        //if(list.isEmpty()){
 
    /* }
     else {
@@ -57,14 +56,15 @@ public class ShoppingCartBean implements Serializable {
 
         return "index";
     }
-    public Map<Food, Integer> printInHashMap() {
-        Map<Food, Integer> uniqueSet = new HashMap<Food, Integer>();
 
-        for (Food product : list) {
+    public Map<Product, Integer> printInHashMap() {
+        Map<Product, Integer> uniqueSet = new HashMap<Product, Integer>();
+
+        for (Product product : list) {
             uniqueSet.computeIfAbsent(product, k -> Collections.frequency(list, product));
         }
 
-       // logger.log(Level.INFO, String.valueOf("WAT ZIT ERIN: "+ uniqueSet.size()));
+        // logger.log(Level.INFO, String.valueOf("WAT ZIT ERIN: "+ uniqueSet.size()));
 
         return uniqueSet;
     }
@@ -73,9 +73,9 @@ public class ShoppingCartBean implements Serializable {
  /*   public Set printInHashSet() {
        // int number=0;
         System.out.println("Example with Sets and Hashset");
-        Set<Food> uniqueSet = new HashSet<Food>(list);
+        Set<Product> uniqueSet = new HashSet<Product>(list);
 
-        for (Food temp : uniqueSet) {
+        for (Product temp : uniqueSet) {
             System.out.println(temp.getFoodId() + ": " + Collections.frequency(list, temp));
             Collections.frequency(list, temp);
 
@@ -85,10 +85,10 @@ public class ShoppingCartBean implements Serializable {
     }*/
 
 
-    public String calculatePrice(){
-        double total= 0;
-        for (Food food : list ){
-            total += food.getPrice();
+    public String calculatePrice() {
+        double total = 0;
+        for (Product product : list) {
+            total += product.getPrice();
         }
         String priceProduct = convertD(total);
         return priceProduct;
@@ -101,26 +101,33 @@ public class ShoppingCartBean implements Serializable {
 
     }
 
-    public void removeProduct(Food x){
-      //  for(int i =0; i < list.size(); i++) {
+    public String removeProduct(Product x) {
+        //  for(int i =0; i < list.size(); i++) {
         //    if (x.getId() == list.get(i).getId()) {
-                // list.remove(i);
-                // break;
-                list.remove(x);
-             //   break;
-          //  }
-      //  }
+        // list.remove(i);
+        // break;
+        list.remove(x);
+        //   break;
+        //  }
+        //  }
+        return "cart";
     }
 
+    public String removeAllProducts(Product x) {
+        for (int i = -1; i <= list.size(); i++) {
+            list.remove(x);
+        }
+        return "cart";
+    }
 
     public int getSize() {
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             return 0;
         }
-       return list.size();
+        return list.size();
     }
 
-    public String homePage(){
+    public String homePage() {
         return "cart";
     }
 
