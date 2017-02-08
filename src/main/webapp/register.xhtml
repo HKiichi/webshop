@@ -10,94 +10,94 @@
         <h1>Pet Supplies</h1>
     </h:head>
 
-    <h:outputStylesheet library="css" name="styles.css"  />
-    <h:outputStylesheet library="css" name="main.css"  />
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputStylesheet library="css" name="main.css"/>
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
 
     <div></div>
     <div class="container">
-    <h:form>
-    <div class="form-group row">
-        <h:outputLabel value="Voornaam" for="voornaam" class="col-md-2 col-form-label"></h:outputLabel>
-        <div class="col-10">
-            <h:inputText class="form-control" type="text" label="voornaam" id="voornaam"
-                         requiredMessage="Vul voornaam in"
-                         value="#{accountBean.customer.voornaam}"
-                         required="true">
+        <h:form>
+            <div class="form-group row">
+                <h:outputLabel value="Voornaam" for="voornaam" class="col-md-2 col-form-label"></h:outputLabel>
+                <div class="col-10">
+                    <h:inputText class="form-control" type="text" label="voornaam" id="voornaam"
+                                 requiredMessage="Vul voornaam in"
+                                 value="#{accountBean.customer.voornaam}"
+                                 required="true">
 
-            </h:inputText>
-        </div>
+                    </h:inputText>
+                </div>
 
-        <h:message for="voornaam" style="color:red"/>
+                <h:message for="voornaam" style="color:red"/>
 
-    </div>
-    <div class="form-group row">
-        <label for="achternaam" class="col-md-2 col-form-label">Achternaam</label>
-        <div class="col-10">
-            <h:inputText class="name" type="text" required="true" id="achternaam"
-                         value="#{accountBean.customer.achternaam}"
-                         requiredMessage="Vul achternaam in"></h:inputText>
-        </div>
-        <h:message for="achternaam" style="color:red"/>
-    </div>
-    <div class="form-group row">
-        <label for="adres" class="col-md-2 col-form-label">Adres</label>
-        <div class="col-10">
-            <h:inputText class="name" type="text" required="true" id="adres"
-                         requiredMessage="Vul adres in "
-                         value="#{accountBean.customer.adres}"
-
-            ></h:inputText>
-        </div>
-        <h:message for="adres" style="color:red"/>
-    </div>
-    <div class="form-group row">
-        <label for="postcode" class="col-md-2 col-form-label">Postcode</label>
-        <div class="col-10">
-            <h:inputText class="name" type="text" required="true" id="postcode"
-                         requiredMessage="Vul postcode in"
-                         value="#{accountBean.customer.postcode}"
-            ></h:inputText>
-        </div>
-        <h:message for="postcode" style="color:red"/>
-    </div>
-    <div class="form-group row">
-        <label for="stad" class="col-md-2 col-form-label">Stad</label>
-        <div class="col-10">
-            <h:inputText class="name" type="text" required="true"
-                         id="stad"
-                         requiredMessage="Vul stad in"
-                         value="#{accountBean.customer.stad}"></h:inputText>
-        </div>
-        <h:message for="stad" style="color:red"/>
-    </div>
-    <div class="form-group row">
-        <label for="email" class="col-md-2 col-form-label">Email</label>
-        <div class="col-10">
-            <h:inputText class="form-control" type="text" required="true" id="email"
-                         requiredMessage="Vul email in"
-                         value="#{accountBean.customer.email}">
-                <f:validateRegex
-                        pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
-
-            </h:inputText>
-
-        </div>
-        <h:message for="email" style="color:red"/>
-    </div>
-        <div class="form-group row">
-            <label for="password" class="col-md-2 col-form-label">Wachtwoord</label>
-            <div class="col-10">
-                <h:inputSecret class="name" type="text" required="true"
-                             id="password"
-                             requiredMessage="Vul wachtwoord in"
-                               value="#{accountBean.userAccount.password}"></h:inputSecret>
             </div>
-            <h:message for="password" style="color:red"/>
-        </div>
+            <div class="form-group row">
+                <label for="achternaam" class="col-md-2 col-form-label">Achternaam</label>
+                <div class="col-10">
+                    <h:inputText class="name" type="text" required="true" id="achternaam"
+                                 value="#{accountBean.customer.achternaam}"
+                                 requiredMessage="Vul achternaam in"></h:inputText>
+                </div>
+                <h:message for="achternaam" style="color:red"/>
+            </div>
+            <div class="form-group row">
+                <label for="adres" class="col-md-2 col-form-label">Adres</label>
+                <div class="col-10">
+                    <h:inputText class="name" type="text" required="true" id="adres"
+                                 requiredMessage="Vul adres in "
+                                 value="#{accountBean.customer.adres}"
 
-        <h:commandButton value="Registreer" action="#{accountBean.saveAccount()}"/>
-    </h:form>
+                    ></h:inputText>
+                </div>
+                <h:message for="adres" style="color:red"/>
+            </div>
+            <div class="form-group row">
+                <label for="postcode" class="col-md-2 col-form-label">Postcode</label>
+                <div class="col-10">
+                    <h:inputText class="name" type="text" required="true" id="postcode"
+                                 requiredMessage="Vul postcode in"
+                                 value="#{accountBean.customer.postcode}"
+                    ></h:inputText>
+                </div>
+                <h:message for="postcode" style="color:red"/>
+            </div>
+            <div class="form-group row">
+                <label for="stad" class="col-md-2 col-form-label">Stad</label>
+                <div class="col-10">
+                    <h:inputText class="name" type="text" required="true"
+                                 id="stad"
+                                 requiredMessage="Vul stad in"
+                                 value="#{accountBean.customer.stad}"></h:inputText>
+                </div>
+                <h:message for="stad" style="color:red"/>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-md-2 col-form-label">Email</label>
+                <div class="col-10">
+                    <h:inputText class="form-control" type="text" required="true" id="email"
+                                 requiredMessage="Vul email in"
+                                 value="#{accountBean.customer.email}">
+                        <f:validateRegex
+                                pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+
+                    </h:inputText>
+
+                </div>
+                <h:message for="email" style="color:red"/>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-md-2 col-form-label">Wachtwoord</label>
+                <div class="col-10">
+                    <h:inputSecret class="name" type="text" required="true"
+                                   id="password"
+                                   requiredMessage="Vul wachtwoord in"
+                                   value="#{accountBean.userAccount.password}"></h:inputSecret>
+                </div>
+                <h:message for="password" style="color:red"/>
+            </div>
+
+            <h:commandButton value="Registreer" action="#{accountBean.saveAccount()}"/>
+        </h:form>
     </div>
 
 

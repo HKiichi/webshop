@@ -14,7 +14,7 @@ public class UserAccount {
     private String password;
 
     @OneToOne
-    @JoinColumn(name="customerId")
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
     public Customer getCustomer() {

@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class LoggerConfigurator {
 
     @Produces
-    public Logger get (InjectionPoint ip){
+    public Logger get(InjectionPoint ip) {
         Class<?> requestingClass = ip.getMember().getDeclaringClass();
         return Logger.getLogger(requestingClass.getName());
     }

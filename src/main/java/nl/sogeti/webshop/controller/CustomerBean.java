@@ -14,9 +14,6 @@ public class CustomerBean implements Serializable {
     String voornaam;
     String achternaam;
 
-   /* @Inject
-    CustomerService customerService;*/
-
     public String getVoornaam() {
         return voornaam;
     }
@@ -34,17 +31,5 @@ public class CustomerBean implements Serializable {
         this.achternaam = achternaam;
     }
 
-   /* public String savePerson(){
-        if (voornaam != null) {
-            Customer person = new Customer();
-            person.setVoornaam(this.voornaam);
-            person.setAchternaam(this.achternaam);
-            customerService.persist(person);
-            //logger.log(Level.INFO, "Product " + person.getName() + " saved.");
 
-
-        }
-
-        return "index";
-    }*/
 }

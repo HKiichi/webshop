@@ -10,28 +10,29 @@ import java.util.List;
  */
 public abstract class AbstractCrudRepository<T> {
     @PersistenceContext
-    EntityManager entityManager;
+    public EntityManager entityManager;
 
     protected abstract Class<T> getEntityClass();
 
     public T persist(T entity) {
-            this.entityManager.persist(entity);
-            return entity;
-        }
+        this.entityManager.persist(entity);
+        return entity;
+    }
 
-    public T merge(T entity){
+    public T merge(T entity) {
         return this.entityManager.merge(entity);
     }
 
-    public void remove(T entity){
+    public void remove(T entity) {
         T attached = this.entityManager.merge(entity);
         this.entityManager.remove(attached);
     }
-    public T find(Long key){
+
+    public T find(Long key) {
         return this.entityManager.find(getEntityClass(), key);
     }
 
-    public List<T> findAll(){
+    public List<T> findAll() {
         CriteriaQuery<T> cq = entityManager.getCriteriaBuilder().createQuery(
                 this.getEntityClass());
         return entityManager.createQuery(
@@ -39,7 +40,6 @@ public abstract class AbstractCrudRepository<T> {
 
 
     }
-
 
 
 }

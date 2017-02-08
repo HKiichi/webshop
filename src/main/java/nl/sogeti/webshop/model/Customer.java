@@ -1,9 +1,7 @@
 package nl.sogeti.webshop.model;
 
 import javax.persistence.*;
-import javax.xml.registry.infomodel.User;
-import java.util.Collection;
-import java.util.List;
+
 
 /**
  * Created by ikikuchi on 31-1-2017.

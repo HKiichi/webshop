@@ -17,7 +17,7 @@
     <h:outputStylesheet library="css" name="main.css"/>
 
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
 
     <script type="text/xhtml" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -46,13 +46,14 @@
                             <h:outputText value="#{product.key.price}"/>
                         </div>
                         <div class=" col-md-2">
-                            <h:outputText value="#{product.value}"  rendered="true"/>
+                            <h:outputText value="#{product.value}" rendered="true"/>
                         </div>
-                        <h:commandLink  type="button" action="#{shoppingCartBean.addProduct(product.key)}">
+                        <h:commandLink type="button" action="#{shoppingCartBean.addProduct(product.key)}">
                             <span class="glyphicon glyphicon-plus"/>
                         </h:commandLink>
 
-                        <h:commandLink update="button" type="button" action="#{shoppingCartBean.removeProduct(product.key)}">
+                        <h:commandLink update="button" type="button"
+                                       action="#{shoppingCartBean.removeProduct(product.key)}">
 
                             <span class="glyphicon glyphicon-minus"/>
                         </h:commandLink>
@@ -66,11 +67,11 @@
 
         </c:forEach>
 
-    <div style="width: 800px">
-        <h:outputText value="Totaal Prijs:  #{shoppingCartBean.calculatePrice()}"/>
-    </div>
+        <div style="width: 800px">
+            <h:outputText value="Totaal Prijs:  #{shoppingCartBean.calculatePrice()}"/>
+        </div>
 
-    <div></div>
+        <div></div>
         <div></div>
         <div class="container">
             <h:form>
@@ -124,7 +125,7 @@
                         <h:inputText class="name" type="text" required="true"
                                      id="stad"
                                      requiredMessage="Vul stad in"
-                                        value="#{orderBean.customer.stad}"></h:inputText>
+                                     value="#{orderBean.customer.stad}"></h:inputText>
                     </div>
                     <h:message for="stad" style="color:red"/>
                 </div>
@@ -133,7 +134,7 @@
                     <div class="col-10">
                         <h:inputText class="form-control" type="text" required="true" id="email"
                                      requiredMessage="Vul email in"
-                        value="#{orderBean.customer.email}">
+                                     value="#{orderBean.customer.email}">
                             <f:validateRegex
                                     pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
 

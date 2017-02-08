@@ -36,23 +36,8 @@ public class ShoppingCartBean implements Serializable {
     }
 
 
-    //Logger logger;
-
-
     public String addProduct(Product x) {
         list.add(x);
-        //if(list.isEmpty()){
-
-   /* }
-    else {
-        for (int i = 0; i < list.size(); i++) {
-            if (x.getName() != list.get(i).getName()) {
-                list.add(x);
-            }
-            // quantity += 1;
-*/
-        //}
-
 
         return "index";
     }
@@ -64,25 +49,8 @@ public class ShoppingCartBean implements Serializable {
             uniqueSet.computeIfAbsent(product, k -> Collections.frequency(list, product));
         }
 
-        // logger.log(Level.INFO, String.valueOf("WAT ZIT ERIN: "+ uniqueSet.size()));
-
         return uniqueSet;
     }
-
-
- /*   public Set printInHashSet() {
-       // int number=0;
-        System.out.println("Example with Sets and Hashset");
-        Set<Product> uniqueSet = new HashSet<Product>(list);
-
-        for (Product temp : uniqueSet) {
-            System.out.println(temp.getFoodId() + ": " + Collections.frequency(list, temp));
-            Collections.frequency(list, temp);
-
-        }
-
-       return uniqueSet;
-    }*/
 
 
     public String calculatePrice() {
@@ -102,14 +70,8 @@ public class ShoppingCartBean implements Serializable {
     }
 
     public String removeProduct(Product x) {
-        //  for(int i =0; i < list.size(); i++) {
-        //    if (x.getId() == list.get(i).getId()) {
-        // list.remove(i);
-        // break;
         list.remove(x);
-        //   break;
-        //  }
-        //  }
+
         return "cart";
     }
 
@@ -130,21 +92,6 @@ public class ShoppingCartBean implements Serializable {
     public String homePage() {
         return "cart";
     }
-
-    /*public String getName() {
-        if(!list.isEmpty())
-             return list.get(list.size()-1).getName();
-
-        return "niks";
-    }*/
-
-    /*public String getDescription(){
-        return list.get(list.size()-1).getDescription();
-    }
-
-    public double getPrice(){
-        return list.get(list.size()-1).getPrice();
-    }*/
 
 
 }

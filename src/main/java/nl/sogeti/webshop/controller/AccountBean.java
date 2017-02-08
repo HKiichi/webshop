@@ -6,7 +6,6 @@ import nl.sogeti.webshop.service.CustomerService;
 import nl.sogeti.webshop.service.UserAccountService;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -46,7 +45,7 @@ public class AccountBean implements Serializable {
         this.userAccount = userAccount;
     }
 
-    public String saveAccount(){
+    public String saveAccount() {
         if (customer.getVoornaam() != null) {
             customerService.persist(customer);
             userAccount.setCustomer(customer);

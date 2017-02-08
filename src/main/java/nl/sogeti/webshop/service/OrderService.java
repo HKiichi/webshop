@@ -8,12 +8,12 @@ import javax.ejb.Stateless;
  * Created by ikikuchi on 1-2-2017.
  */
 @Stateless
-public class OrderService extends AbstractCrudRepository<Order>{
+public class OrderService extends AbstractCrudRepository<Order> {
 
-        @Override
-        protected Class<Order> getEntityClass(){
-            return Order.class;
+    @Override
+    protected Class<Order> getEntityClass() {
+        return Order.class;
 
-        }
     }
+}
 

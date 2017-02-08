@@ -1,4 +1,5 @@
 package nl.sogeti.webshop.service;
+
 import nl.sogeti.webshop.model.Customer;
 
 import javax.ejb.Stateless;
@@ -10,7 +11,7 @@ import javax.ejb.Stateless;
 public class CustomerService extends AbstractCrudRepository<Customer> {
 
     @Override
-    protected Class<Customer> getEntityClass(){
+    protected Class<Customer> getEntityClass() {
         return Customer.class;
 
     }

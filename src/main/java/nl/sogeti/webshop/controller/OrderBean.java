@@ -5,7 +5,6 @@ import nl.sogeti.webshop.model.Order;
 import nl.sogeti.webshop.service.CustomerService;
 import nl.sogeti.webshop.service.OrderService;
 
-
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -66,14 +65,6 @@ public class OrderBean {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, message));
     }
-
-
-
-
-
-
-
-
 
 
 }

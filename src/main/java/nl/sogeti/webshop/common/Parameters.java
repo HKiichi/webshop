@@ -9,16 +9,16 @@ public enum Parameters {
 
     private String defaultValue;
 
-    private Parameters(String defaultValue){
+    private Parameters(String defaultValue) {
         this.defaultValue = defaultValue;
     }
 
-    public String getValue(){
+    public String getValue() {
         String sysPropValue = System.getProperty(this.toString());
         return sysPropValue != null ? sysPropValue : this.defaultValue;
     }
 
-    public int getIntValue(){
-      return Integer.valueOf(this.getValue());
+    public int getIntValue() {
+        return Integer.valueOf(this.getValue());
     }
 }

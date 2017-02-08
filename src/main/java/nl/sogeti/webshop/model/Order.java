@@ -19,7 +19,7 @@ public class Order {
     private Customer customer;
 
     @ManyToMany
-    @JoinColumn(name ="productId")
+    @JoinColumn(name = "productId")
     private List<Product> productList;
 
     public List<Product> getProductList() {

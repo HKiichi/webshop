@@ -1,39 +1,34 @@
-/*
 package nl.sogeti.webshop;
 
-import nl.sogeti.webshop.Service.CatFoodService;
-import nl.sogeti.webshop.product.CatFood;
+import nl.sogeti.webshop.model.Product;
 
+import nl.sogeti.webshop.service.ProductService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertNotNull;
 
-*/
-/*
 
  public class CatFoodRepositoryTest extends AbstractTest {
 
-    FoodService repository;
+    ProductService repository;
 
 
     @Before
     public void setup(){
-        repository = new FoodService();
+        repository = new ProductService();
         repository.entityManager = getEntityManager();
         getTransaction().begin();
     }
 
-    @Test
+     @Test
     public void testPersist(){
-        Product food = new Product();
-        food.setName("sheba");
-        food.setDescription("Delicious food for a good price");
-        food.setPrice(5.20);
-        food = repository.persist(food);
-       getTransaction().commit();
-        assertNotNull(repository.find(food.getId()));
+        Product product = new Product();
+        product.setName("sheba");
+        product= repository.persist(product);
+
+        assertNotNull(repository.find((long) product.getProductId()));
     }
 
 
@@ -46,4 +41,3 @@ import static junit.framework.Assert.assertNotNull;
 }
 
 
-*/

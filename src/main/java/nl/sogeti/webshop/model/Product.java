@@ -1,6 +1,5 @@
 package nl.sogeti.webshop.model;
 
-
 import javax.persistence.*;
 
 /**

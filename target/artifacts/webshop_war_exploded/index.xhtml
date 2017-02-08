@@ -7,77 +7,81 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
-   <f:view>
-       <h:head>
-      <h1>Pet Supplies</h1>
-       </h:head>
+<f:view>
+    <h:head>
+        <h1>Pet Supplies</h1>
+    </h:head>
     <body>
     <div id="page-wrap">
-        <h:outputStylesheet library="css" name="styles.css"  />
-        <h:outputStylesheet library="css" name="main.css"  />
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h:outputStylesheet library="css" name="main.css"/>
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-
 
 
         <h:messages globalOnly="true" infoClass="info" style="color:green"></h:messages>
 
         <h:form>
             <div class="col-sm-1">
-            <h:commandButton value="Registreer" action="register"></h:commandButton>
+                <h:commandButton value="Registreer" action="register"></h:commandButton>
             </div>
         </h:form>
 
-       <div></div>
+        <div></div>
         <h:outputText value="#{shoppingCartBean.getSize()}" style="float:right"/>
         <br></br>
         <h:form>
-        <h:commandLink
-                        style="float:right;"
-                        action="cart">
-        <h:graphicImage id="img1"
-                        library="images"
-                        name="1485380753_shopping-cart.png"/>
-        </h:commandLink>
+            <h:commandLink
+                    style="float:right;"
+                    action="cart">
+                <h:graphicImage id="img1"
+                                library="images"
+                                name="1485380753_shopping-cart.png"/>
+            </h:commandLink>
         </h:form>
         <br></br>
 
-           <h3>Producten</h3>
+        <h:form>
+            <h:selectOneRadio value="speelgoed"/>
+            <h:selectOneRadio value="eten"/>
+        </h:form>
+
+
+
+        <h3>Producten</h3>
 
         <div></div>
-           <h:dataTable id="FoodBeanTable" var="FoodBeanItem" value="#{productBean.getAllFoods()}" border="1" style="align-content:center">
-               <h:column>
-                   <f:facet name="header">Product</f:facet>
-                   <h:outputText value="#{FoodBeanItem.name}"/>
-               </h:column>
-              <h:column>
-                  <f:facet name="header">Beschrijving</f:facet>
-                  <h:outputText value="#{FoodBeanItem.description}"/>
-              </h:column>
-               <h:column>
-                   <f:facet name="header">Prijs</f:facet>
-                   <h:outputText value="#{FoodBeanItem.price}"/>
-               </h:column>
-               <h:column>
-                   <h:form>
-               <h:commandButton value="In winkelwagen" action="#{shoppingCartBean.addProduct(FoodBeanItem)}"/>
-               </h:form>
-           </h:column>
-               <!--<h:column>
-                   <h:form>
-                       <h:commandButton value="Verwijder" action="#{shoppingCart.removeProduct(CatBeanItem)}"/>
-                   </h:form>
-               </h:column>-->
-           </h:dataTable>
+        <h:dataTable id="FoodBeanTable" var="FoodBeanItem" value="#{productBean.getAllFoods()}" border="1"
+                     style="align-content:center">
+            <h:column>
+                <f:facet name="header">Product</f:facet>
+                <h:outputText value="#{FoodBeanItem.name}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Beschrijving</f:facet>
+                <h:outputText value="#{FoodBeanItem.description}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Prijs</f:facet>
+                <h:outputText value="#{FoodBeanItem.price}"/>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton value="In winkelwagen" action="#{shoppingCartBean.addProduct(FoodBeanItem)}"/>
+                </h:form>
+            </h:column>
+            <!--<h:column>
+                <h:form>
+                    <h:commandButton value="Verwijder" action="#{shoppingCart.removeProduct(CatBeanItem)}"/>
+                </h:form>
+            </h:column>-->
+        </h:dataTable>
 
-       <br></br>
-
-
+        <br></br>
 
 
     </div>
 
 
-
     </body>
-     </f:view>
+</f:view>
 </html>
