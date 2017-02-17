@@ -61,9 +61,9 @@ public class OrderBean {
 
 
     private void showConfirmation() {
-        String message = "Bestelling gelukt";
+       // String message = "Bestelling gelukt";
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, message));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bedankt voor uw bestelling",null));
     }
 
 

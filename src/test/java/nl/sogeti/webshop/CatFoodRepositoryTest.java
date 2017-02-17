@@ -1,3 +1,4 @@
+/*
 package nl.sogeti.webshop;
 
 import nl.sogeti.webshop.model.Product;
@@ -41,3 +42,4 @@ import static junit.framework.Assert.assertNotNull;
 }
 
 
+*/

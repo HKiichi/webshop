@@ -8,80 +8,105 @@
 
 
 <f:view>
+    <link rel=" stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputStylesheet library="css" name="main.css"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+
     <h:head>
-        <h1>Pet Supplies</h1>
-    </h:head>
+
+
+    <nav class="navbar navbar-custom" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" style="font-size: large" >Pet supplies</a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ><a href="#">Product Overzicht</a> </li>
+                <li  ><a href="register.xhtml">Registreren</a></li>
+                <li  ><a href="login.xhtml">Login</a></li>
+
+    </ul>
+        </div>
+    </div>
+    </nav>
+
+</h:head>
     <body>
-    <div id="page-wrap">
-        <h:outputStylesheet library="css" name="styles.css"/>
-        <h:outputStylesheet library="css" name="main.css"/>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <h:messages globalOnly="true" infoClass="info" style="color:green; text-align: center; background-color: #ffff00"></h:messages>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-2">
 
 
-        <h:messages globalOnly="true" infoClass="info" style="color:green"></h:messages>
+                   <!--  <h:form>
+                     <h:selectManyCheckbox  onclick="#{productBean.getSelectedProducts().get(1)}" value="false">
+                         <f:selectItem itemLabel="category" itemValue="speelgoed" />
+                         <br></br>
+                         <f:selectItem itemLabel="category" itemValue="eten"/>
+                     </h:selectManyCheckbox>
+                 </h:form>-->
 
-        <h:form>
-            <div class="col-sm-1">
-                <h:commandButton value="Registreer" action="register"></h:commandButton>
             </div>
-        </h:form>
-
-        <div></div>
-        <h:outputText value="#{shoppingCartBean.getSize()}" style="float:right"/>
-        <br></br>
-        <h:form>
-            <h:commandLink
-                    style="float:right;"
-                    action="cart">
-                <h:graphicImage id="img1"
-                                library="images"
-                                name="1485380753_shopping-cart.png"/>
-            </h:commandLink>
-        </h:form>
-        <br></br>
-
-        <h:form>
-            <h:selectOneRadio value="#{}">
-                <f:selectItem itemLabel="speelgoed"/>
-                <f:selectItem itemLabel="eten"/>
-            </h:selectOneRadio>
-        </h:form>
 
 
-        <h3>Producten</h3>
+            <div class="col-md-8">
 
-        <div></div>
-        <h:dataTable id="FoodBeanTable" var="FoodBeanItem" value="#{productBean.getAllFoods()}" border="1"
-                     style="align-content:center">
-            <h:column>
-                <f:facet name="header">Product</f:facet>
-                <h:outputText value="#{FoodBeanItem.name}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Beschrijving</f:facet>
-                <h:outputText value="#{FoodBeanItem.description}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Prijs</f:facet>
-                <h:outputText value="#{FoodBeanItem.price}"/>
-            </h:column>
-            <h:column>
+                <h3>Producten</h3>
+
+
+                <h:dataTable id="FoodBeanTable" var="FoodBeanItem" value="#{productBean.getSelectedProducts()}"
+                             border="1"
+                             style="align-content:center">
+                    <h:column>
+                        <f:facet name="header">Product</f:facet>
+                        <h:outputText value="#{FoodBeanItem.name}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Beschrijving</f:facet>
+                        <h:outputText value="#{FoodBeanItem.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Prijs</f:facet>
+                        <h:outputText value="#{FoodBeanItem.price}"/>
+                    </h:column>
+                    <h:column>
+                        <h:form>
+                            <h:commandButton value="In winkelwagen"
+                                             action="#{shoppingCartBean.addProduct(FoodBeanItem)}"/>
+                        </h:form>
+                    </h:column>
+                    <!--<h:column>
+                        <h:form>
+                            <h:commandButton value="Verwijder" action="#{shoppingCart.removeProduct(CatBeanItem)}"/>
+                        </h:form>
+                    </h:column>-->
+                </h:dataTable>
+            </div>
+
+
+            <div class="col-md-2">
+
+                <h:outputText value="#{shoppingCartBean.getSize()}"/>
+
                 <h:form>
-                    <h:commandButton value="In winkelwagen" action="#{shoppingCartBean.addProduct(FoodBeanItem)}"/>
-                </h:form>
-            </h:column>
-            <!--<h:column>
-                <h:form>
-                    <h:commandButton value="Verwijder" action="#{shoppingCart.removeProduct(CatBeanItem)}"/>
-                </h:form>
-            </h:column>-->
-        </h:dataTable>
+                    <h:commandLink
 
-        <br></br>
+                            action="cart">
+                        <h:graphicImage id="img1"
+                                        library="images"
+                                        name="1485380753_shopping-cart.png"/>
+                    </h:commandLink>
+                </h:form>
 
+            </div>
+        </div>
 
     </div>
-
 
     </body>
 </f:view>

@@ -9,7 +9,23 @@
       xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:head>
-        <h1>Pet Supplies</h1>
+        <nav class="navbar navbar-custom" >
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" >Pet supplies</a>
+                </div>
+
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li ><a href="index.xhtml">Product Overzicht</a> </li>
+                        <li  ><a href="register.xhtml">Registreren</a></li>
+                        <li ><a href="login.xhtml">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </h:head>
 
 
@@ -18,135 +34,146 @@
 
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel=" stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-
-    <script type="text/xhtml" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <body>
-    <h:form>
-        <div class="col-md-1"/>
-        <h:commandButton value="Product Overzicht" action="index"/>
-    </h:form>
-    <div id="page-wrap">
 
-        <div></div>
+    <div class="container">
+        <div class="row">
 
-        <c:forEach var="product" items="#{shoppingCartBean.printInHashMap()}">
 
-            <h:form>
-                <div class="container">
+
+
+            <div id="first_row" class="col-md-12">
+
+
+                <h:form>
+                    <div></div>
+
+                    <c:forEach var="product" items="#{shoppingCartBean.printInHashMap()}">
+
+
+                        <div class="row">
+                            <div class=" col-md-2">
+                                <h:outputText value="#{product.key.name}"/>
+                            </div>
+                            <div class=" col-md-2">
+                                <h:outputText value="#{product.key.description}"/>
+                            </div>
+                            <div class=" col-md-2 text-right">
+                                <h:outputText value="#{product.key.price}"/>
+                            </div>
+                            <div class=" col-md-2">
+                                <h:outputText value="#{product.value}" rendered="true"/>
+                            </div>
+                            <div class=" col-md-4">
+                                <h:commandLink type="button"
+                                               action="#{shoppingCartBean.addProductShoppingCart(product.key)}">
+                                    <span class="glyphicon glyphicon-plus"/>
+                                </h:commandLink>
+
+                                <h:commandLink update="button" type="button"
+                                               action="#{shoppingCartBean.removeProduct(product.key)}">
+
+                                    <span class="glyphicon glyphicon-minus"/>
+                                </h:commandLink>
+                                <h:commandLink type="button"
+                                               action="#{shoppingCartBean.removeAllProducts(product.key)}">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </h:commandLink>
+                            </div>
+                        </div>
+
+
+                    </c:forEach>
+                </h:form>
+                <h:form>
                     <div class="row">
-                        <div class=" col-md-2">
-                            <h:outputText value="#{product.key.name}"/>
+                        <div class="col-md-2"/>
+                        <div class="col-md-2"/>
+
+                        <div id="prijs" class="col-md-2 text-right">
+                            <h:outputText value="Totaal Prijs:  #{shoppingCartBean.calculatePrice()}"/>
                         </div>
-                        <div class=" col-md-2">
-                            <h:outputText value="#{product.key.description}"/>
+                        <div class="col-md-6"/>
+                    </div>
+
+
+                    <br></br>
+                    <div class="form-group row">
+                        <h:outputLabel value="Voornaam" for="voornaam" class="col-md-2 col-form-label"></h:outputLabel>
+                        <div class="col-10">
+                            <h:inputText class="form-control" type="text" label="voornaam" id="voornaam"
+                                         requiredMessage="Vul voornaam in"
+                                         value="#{orderBean.customer.voornaam}"
+                                         required="true">
+
+                            </h:inputText>
                         </div>
-                        <div class=" col-md-2">
-                            <h:outputText value="#{product.key.price}"/>
+
+                        <h:message for="voornaam" style="color:red"/>
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="achternaam" class="col-md-2 col-form-label">Achternaam</label>
+                        <div class="col-10">
+                            <h:inputText class="name" type="text" required="true" id="achternaam"
+                                         value="#{orderBean.customer.achternaam}"
+                                         requiredMessage="Vul achternaam in"></h:inputText>
                         </div>
-                        <div class=" col-md-2">
-                            <h:outputText value="#{product.value}" rendered="true"/>
+                        <h:message for="achternaam" style="color:red"/>
+                    </div>
+                    <div class="form-group row">
+                        <label for="adres" class="col-md-2 col-form-label">Adres</label>
+                        <div class="col-10">
+                            <h:inputText class="name" type="text" required="true" id="adres"
+                                         requiredMessage="Vul adres in "
+                                         value="#{orderBean.customer.adres}"
+
+                            ></h:inputText>
                         </div>
-                        <h:commandLink type="button" action="#{shoppingCartBean.addProduct(product.key)}">
-                            <span class="glyphicon glyphicon-plus"/>
-                        </h:commandLink>
-
-                        <h:commandLink update="button" type="button"
-                                       action="#{shoppingCartBean.removeProduct(product.key)}">
-
-                            <span class="glyphicon glyphicon-minus"/>
-                        </h:commandLink>
-                        <h:commandLink type="button" action="#{shoppingCartBean.removeAllProducts(product.key)}">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </h:commandLink>
+                        <h:message for="adres" style="color:red"/>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <label for="postcode" class="col-md-2 col-form-label">Postcode</label>
+                        <div class="col-10">
+                            <h:inputText class="name" type="text" required="true" id="postcode"
+                                         requiredMessage="Vul postcode in"
+                                         value="#{orderBean.customer.postcode}"
+                            ></h:inputText>
+                        </div>
+                        <h:message for="postcode" style="color:red"/>
+                    </div>
+                    <div class="form-group row">
+                        <label for="stad" class="col-md-2 col-form-label">Stad</label>
+                        <div class="col-10">
+                            <h:inputText class="name" type="text" required="true"
+                                         id="stad"
+                                         requiredMessage="Vul stad in"
+                                         value="#{orderBean.customer.stad}"></h:inputText>
+                        </div>
+                        <h:message for="stad" style="color:red"/>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-md-2 col-form-label">Email</label>
+                        <div class="col-10">
+                            <h:inputText class="form-control" type="text" required="true" id="email"
+                                         requiredMessage="Vul email in"
+                                         value="#{orderBean.customer.email}">
+                                <f:validateRegex
+                                        pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
 
-            </h:form>
-
-        </c:forEach>
-
-        <div style="width: 800px">
-            <h:outputText value="Totaal Prijs:  #{shoppingCartBean.calculatePrice()}"/>
-        </div>
-
-        <div></div>
-        <div></div>
-        <div class="container">
-            <h:form>
-                <div class="form-group row">
-                    <h:outputLabel value="Voornaam" for="voornaam" class="col-md-2 col-form-label"></h:outputLabel>
-                    <div class="col-10">
-                        <h:inputText class="form-control" type="text" label="voornaam" id="voornaam"
-                                     requiredMessage="Vul voornaam in"
-                                     value="#{orderBean.customer.voornaam}"
-                                     required="true">
-
-                        </h:inputText>
+                            </h:inputText>
+                        </div>
+                        <h:message for="email" style="color:red"/>
                     </div>
 
-                    <h:message for="voornaam" style="color:red"/>
 
-                </div>
-                <div class="form-group row">
-                    <label for="achternaam" class="col-md-2 col-form-label">Achternaam</label>
-                    <div class="col-10">
-                        <h:inputText class="name" type="text" required="true" id="achternaam"
-                                     value="#{orderBean.customer.achternaam}"
-                                     requiredMessage="Vul achternaam in"></h:inputText>
-                    </div>
-                    <h:message for="achternaam" style="color:red"/>
-                </div>
-                <div class="form-group row">
-                    <label for="adres" class="col-md-2 col-form-label">Adres</label>
-                    <div class="col-10">
-                        <h:inputText class="name" type="text" required="true" id="adres"
-                                     requiredMessage="Vul adres in "
-                                     value="#{orderBean.customer.adres}"
+                    <h:commandButton value="Bestel" action="#{orderBean.saveOrder()}"/>
+                </h:form>
 
-                        ></h:inputText>
-                    </div>
-                    <h:message for="adres" style="color:red"/>
-                </div>
-                <div class="form-group row">
-                    <label for="postcode" class="col-md-2 col-form-label">Postcode</label>
-                    <div class="col-10">
-                        <h:inputText class="name" type="text" required="true" id="postcode"
-                                     requiredMessage="Vul postcode in"
-                                     value="#{orderBean.customer.postcode}"
-                        ></h:inputText>
-                    </div>
-                    <h:message for="postcode" style="color:red"/>
-                </div>
-                <div class="form-group row">
-                    <label for="stad" class="col-md-2 col-form-label">Stad</label>
-                    <div class="col-10">
-                        <h:inputText class="name" type="text" required="true"
-                                     id="stad"
-                                     requiredMessage="Vul stad in"
-                                     value="#{orderBean.customer.stad}"></h:inputText>
-                    </div>
-                    <h:message for="stad" style="color:red"/>
-                </div>
-                <div class="form-group row">
-                    <label for="email" class="col-md-2 col-form-label">Email</label>
-                    <div class="col-10">
-                        <h:inputText class="form-control" type="text" required="true" id="email"
-                                     requiredMessage="Vul email in"
-                                     value="#{orderBean.customer.email}">
-                            <f:validateRegex
-                                    pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
-
-                        </h:inputText>
-                    </div>
-                    <h:message for="email" style="color:red"/>
-                </div>
-
-
-                <h:commandButton value="Bestel" action="#{orderBean.saveOrder()}"/>
-
-            </h:form>
+            </div>
         </div>
     </div>
     </body>

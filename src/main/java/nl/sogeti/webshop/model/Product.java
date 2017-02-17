@@ -1,6 +1,7 @@
 package nl.sogeti.webshop.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by ikikuchi on 13-1-2017.
@@ -16,8 +17,18 @@ public class Product {
 
     private String description;
 
+    @ManyToOne()
+    private Category category;
 
     private double price;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Product() {
     }
