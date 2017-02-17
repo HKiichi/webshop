@@ -28,7 +28,7 @@ public abstract class AbstractCrudRepository<T> {
         this.entityManager.remove(attached);
     }
 
-    public T find(Long key) {
+    public T find(String key) {
         return this.entityManager.find(getEntityClass(), key);
     }
 

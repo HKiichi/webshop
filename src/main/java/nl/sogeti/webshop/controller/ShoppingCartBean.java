@@ -42,6 +42,12 @@ public class ShoppingCartBean implements Serializable {
         return "index";
     }
 
+    public String addProductShoppingCart(Product x) {
+        list.add(x);
+
+        return "cart";
+    }
+
     public Map<Product, Integer> printInHashMap() {
         Map<Product, Integer> uniqueSet = new HashMap<Product, Integer>();
 
@@ -87,10 +93,6 @@ public class ShoppingCartBean implements Serializable {
             return 0;
         }
         return list.size();
-    }
-
-    public String homePage() {
-        return "cart";
     }
 
 

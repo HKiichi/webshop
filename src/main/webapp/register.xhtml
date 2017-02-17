@@ -6,16 +6,38 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:head>
-        <h1>Pet Supplies</h1>
-    </h:head>
 
     <h:outputStylesheet library="css" name="styles.css"/>
     <h:outputStylesheet library="css" name="main.css"/>
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
 
+    <h:head>
+
+        <nav class="navbar navbar-custom" >
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" >Pet supplies</a>
+                </div>
+
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li ><a href="index.xhtml">Product Overzicht</a> </li>
+                        <li  ><a >Registreren</a></li>
+                        <li ><a href="login.xhtml">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </h:head>
+
+
+
+
+
     <div></div>
-    <div class="container">
+    <div id="register_first_row" class="container">
         <h:form>
             <div class="form-group row">
                 <h:outputLabel value="Voornaam" for="voornaam" class="col-md-2 col-form-label"></h:outputLabel>
@@ -96,7 +118,11 @@
                 <h:message for="password" style="color:red"/>
             </div>
 
-            <h:commandButton value="Registreer" action="#{accountBean.saveAccount()}"/>
+            <h:commandButton value="Registreren" action="#{accountBean.saveAccount()}"/>
+            <br></br>
+
+            <a href="index.xhtml" class="btn btn-success" style="size: 20px">Annuleren</a>
+
         </h:form>
     </div>
 

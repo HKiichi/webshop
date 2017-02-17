@@ -1,3 +1,4 @@
+/*
 package nl.sogeti.webshop;
 
 import org.junit.Before;
@@ -35,3 +36,4 @@ public class AbstractTest {
 
 
 }
+*/
